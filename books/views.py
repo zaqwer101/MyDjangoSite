@@ -6,12 +6,9 @@ from books.models import Author, Book
 
 
 def index(request):
-    all_books = Book.objects
-    template = loader.get_template('books/index.html')
-    context = RequestContext(request, {
-        'all_books': all_books,
-    })
-    return HttpResponse(template.render({}, request))
+    all_books = Book.objects.all()
+    context = {'all_books': all_books,}
+    return render(request, 'books/index.html', context)
 
 
 def author_detail(request, a_id):

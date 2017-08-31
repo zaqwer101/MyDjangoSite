@@ -1,4 +1,6 @@
 {% if all_books %}
+    <h3>Вы попали на сайт про книги</h3><br>
+    <p>Список книг:</p>
     <ul>
     {% for book in all_books %}
         <li><a href="/books/{{ book.id }}/">{{ book.name }}</a></li>
