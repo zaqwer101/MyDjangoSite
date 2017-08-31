@@ -1,0 +1,11 @@
+<h1>{{ author.name }}</h1>
+{%  if author.get_books %}
+    <h3>Список книг:</h3>
+    <ul>
+        {% for book in author.get_books %}
+            <li><a href="{% url 'book_detail' book.id %}"> {{ book.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Автор ещё не написал ни одной книги.</h3>
+{% endif %}

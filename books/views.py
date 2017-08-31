@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import loader, RequestContext
 
 from books.models import Author, Book
@@ -12,11 +12,12 @@ def index(request):
 
 
 def author_detail(request, a_id):
-    return HttpResponse("Это страничка автора " + Author.objects.all().filter(id=a_id)[0].__str__())
+    author = Author.objects.all().filter(id=a_id)[0]
+    context = {'author': author, }
+    return render(request, 'books/author_details.html', context)
 
 
 def book_detail(request, b_id):
-    return HttpResponse("Это страничка, посвященная книге \"" + Book.objects.all().
-                        filter(author__book__id=b_id)[0].__str__() + "\"<br>"
-                        + "Потом тут будет ещё описание книги и ссылка на автора."
-                        )
+    book = get_object_or_404(Book, author__book__id=b_id)
+    context = {'book': book, }
+    return render(request, 'books/book_detail.html', context)

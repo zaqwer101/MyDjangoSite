@@ -3,7 +3,7 @@
     <p>Список книг:</p>
     <ul>
     {% for book in all_books %}
-        <li><a href="/books/{{ book.id }}/">{{ book.name }}</a></li>
+        <li><a href="{% url 'book_detail' book.id %}">{{ book.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
