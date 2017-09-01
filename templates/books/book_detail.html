@@ -1,3 +1,6 @@
+{% extends 'books/base.html' %}
+{% block content %}
 <h1>{{ book.name }}</h1><br>
 <h3>Автор: <a href="{% url 'author_detail' book.author.id %}">{{ book.author.name }}</a></h3>
 <p>{{ book.description }}</p>
+{% endblock %}

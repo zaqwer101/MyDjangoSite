@@ -1,6 +1,4 @@
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from django.template import loader, RequestContext
 
 from books.models import Author, Book
 
@@ -18,6 +16,6 @@ def author_detail(request, a_id):
 
 
 def book_detail(request, b_id):
-    book = get_object_or_404(Book, author__book__id=b_id)
+    book = get_object_or_404(Book, id=b_id)
     context = {'book': book, }
     return render(request, 'books/book_detail.html', context)

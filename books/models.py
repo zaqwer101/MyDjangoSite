@@ -17,7 +17,8 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     name = models.CharField(max_length=127)
     description = models.CharField(max_length=1023)
-    id = models.PositiveIntegerField(primary_key=True)
+
+    # id = models.PositiveIntegerField(primary_key=True)
 
     def __str__(self):
         return self.name
